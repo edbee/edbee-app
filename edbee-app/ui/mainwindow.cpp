@@ -988,7 +988,10 @@ void MainWindow::createEditorAction(const QString& id, const char* text )
 {
     QAction* action = new QAction( tr(text), 0 );
     edbee::TextEditorKeyMap* map = edbee::Edbee::instance()->defaultKeyMap();
-    action->setShortcut( map->get( id )->sequence() );
+    edbee::TextEditorKey* key = map->get(id);
+    if( key ) {
+        action->setShortcut( key->sequence() );
+    }
     action->setData( id );
     connect( action, SIGNAL(triggered()), SLOT(editorActionTriggered()) );
     actionMap_.insert(id,action);

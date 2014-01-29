@@ -13,6 +13,8 @@ ICON = images/icon.icns
 INCLUDEPATH += $$PWD
 DEPENDPATH += $$PWD
 
+# We also depend on edbee
+
 
 SOURCES +=\
     main.cpp \
@@ -95,6 +97,6 @@ POST_TARGETDEPS += copyfiles
 
 ## Extra dependencies
 ##====================
-#include(../vendor/qslog/QsLog.pri)
+include(../vendor/qslog/QsLog.pri)
 include(../vendor/qtawesome/QtAwesome.pri)
 
