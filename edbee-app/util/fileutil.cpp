@@ -10,7 +10,7 @@
 #include <QPRocess>
 #include <QUrl>
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// blank destructor.

@@ -15,7 +15,7 @@
 #include "models/workspace.h"
 #include "models/workspacemanager.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 /// The application state serializer
 AppStateSerializer::AppStateSerializer()

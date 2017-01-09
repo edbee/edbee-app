@@ -26,7 +26,7 @@
 #include "ui/mainwindow.h"
 #include "ui/windowmanager.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// constructs the main appication object

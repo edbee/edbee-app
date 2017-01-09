@@ -8,7 +8,7 @@
 #include "edbee/util/cascadingqvariantmap.h"
 #include "models/edbeeconfig.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 void EdbeeConfigTest::testAddFile()

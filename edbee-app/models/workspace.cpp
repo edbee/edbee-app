@@ -7,7 +7,7 @@
 
 #include <QStringListModel>
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// Returns the file-extension used for project filenames

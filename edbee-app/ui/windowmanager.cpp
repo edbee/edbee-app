@@ -9,7 +9,7 @@
 #include "models/workspacemanager.h"
 #include "ui/mainwindow.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 /// the default window manager constructor
 WindowManager::WindowManager(QObject *parent)

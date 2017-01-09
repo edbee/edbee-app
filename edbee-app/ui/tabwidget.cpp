@@ -8,7 +8,7 @@
 #include <QTabBar>
 #include <QWheelEvent>
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 /// constructs the tab widget
 TabWidget::TabWidget(QWidget *parent)

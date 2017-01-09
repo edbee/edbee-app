@@ -10,7 +10,7 @@
 
 #include "application.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 int main(int argc, char* argv[])

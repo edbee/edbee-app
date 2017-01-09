@@ -27,7 +27,7 @@
 #include "ui/windowmanager.h"
 
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// initializes the session serializer

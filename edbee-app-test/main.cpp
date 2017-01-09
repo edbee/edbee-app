@@ -10,7 +10,7 @@
 #include <QsLog.h>
 #include <QsLogDest.h>
 
-#include "util/test.h"
+#include "edbee/util/test.h"
 
 #include "edbee/edbee.h"
 

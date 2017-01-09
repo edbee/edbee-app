@@ -11,7 +11,7 @@
 #include "ui/mainwindow.h"
 #include "ui/windowmanager.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// Executes the reveal in side-bar command

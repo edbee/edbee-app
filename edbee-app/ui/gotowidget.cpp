@@ -12,7 +12,7 @@
 
 #include "gotowidget.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 GotoWidget::GotoWidget(edbee::TextEditorWidget* parent)

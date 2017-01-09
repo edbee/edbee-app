@@ -7,7 +7,7 @@
 
 #include <QObject>
 
-#include "util/test.h"
+#include "edbee/util/test.h"
 
 class EdbeeConfigTest : public edbee::test::TestCase
 {

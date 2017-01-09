@@ -49,7 +49,7 @@
 #include "ui/windowmanager.h"
 #include "util/fileutil.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 

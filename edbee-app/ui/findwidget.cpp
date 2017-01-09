@@ -26,7 +26,7 @@
 #include "edbee/views/textselection.h"
 #include "QtAwesome.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 FindWidget::FindWidget(edbee::TextEditorWidget* parent)

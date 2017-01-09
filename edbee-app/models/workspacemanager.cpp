@@ -10,7 +10,7 @@
 #include "ui/windowmanager.h"
 #include "workspace.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// constructs the workspace manager

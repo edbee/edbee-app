@@ -22,7 +22,7 @@
 #include "QtAwesome.h"
 #include "util/fileutil.h"
 
-#include "debug.h"
+#include "edbee/debug.h"
 
 
 /// Constructs the file side widget
