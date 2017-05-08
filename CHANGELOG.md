@@ -2,6 +2,8 @@
 
 edbee.app:
 
+- fix: Fixed platform incorrect include 
+- fix: Updated Onigmo, fixing a lexing crash
 - BREAKING CHANGE, edbee-lib. moved all source/headers files under the folder 'edbee/' to prevent filename collisions when embedding it in other projects.
 
 - add #105, Improved workspace support so multiple workspaces can be open at one time

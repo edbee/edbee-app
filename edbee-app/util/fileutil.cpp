@@ -7,7 +7,7 @@
 
 #include <QDesktopServices>
 #include <QFile>
-#include <QPRocess>
+#include <QProcess>
 #include <QUrl>
 
 #include "edbee/debug.h"

@@ -3,7 +3,8 @@
 
 include($$PWD/edbee-app.pri)
 
-
+#QMAKE_CXXFLAGS+=-fsanitize=address -fsanitize=bounds
+#QMAKE_LFLAGS+=-fsanitize=address -fsanitize=bounds
 
 ## edbee-lib dependency
 ##=======================

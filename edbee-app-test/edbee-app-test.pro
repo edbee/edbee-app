@@ -6,6 +6,9 @@ QT  += widgets
 TARGET = edbee-app-test
 TEMPLATE = app
 
+#QMAKE_CXXFLAGS+=-fsanitize=address -fsanitize=bounds
+#QMAKE_LFLAGS+=-fsanitize=address -fsanitize=bounds
+
 
 # This seems to be required for Windows
 INCLUDEPATH += $$PWD
