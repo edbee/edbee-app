@@ -2,6 +2,9 @@
 
 edbee.app:
 
+- fix: FilUtil.cpp didn't compile anymore in Qt 5.9RC
+- fix: Application resource icon wasn't loaded correctly
+- fix: Updated edbee library to fix MinGW crashes and allow MinGW compilation
 - fix: Fixed platform incorrect include 
 - fix: Updated Onigmo, fixing a lexing crash
 - BREAKING CHANGE, edbee-lib. moved all source/headers files under the folder 'edbee/' to prevent filename collisions when embedding it in other projects.

@@ -6,6 +6,7 @@
 #include "fileutil.h"
 
 #include <QDesktopServices>
+#include <QDir>
 #include <QFile>
 #include <QProcess>
 #include <QUrl>

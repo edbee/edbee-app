@@ -6,7 +6,8 @@ TARGET = edbee
 TEMPLATE = app
 
 
-RC_FILE = main.rc
+#win32-msvc*:RC_FILE = main.rc
+RC_ICONS = images/icon.ico
 ICON = images/icon.icns
 
 # This seems to be required for Windows
