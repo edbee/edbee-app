@@ -2,6 +2,7 @@
 
 edbee.app:
 
+- add: Added a Theme Selecter ComboBox to switch themes per tab.
 - fix: FilUtil.cpp didn't compile anymore in Qt 5.9RC
 - fix: Application resource icon wasn't loaded correctly
 - fix: Updated edbee library to fix MinGW crashes and allow MinGW compilation

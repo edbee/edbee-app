@@ -36,6 +36,7 @@
 #include "edbee/util/textcodec.h"
 #include "edbee/views/components/texteditorcomponent.h"
 #include "edbee/views/textrenderer.h"
+#include "edbee/views/texttheme.h"
 
 #include "application.h"
 #include "filetreesidewidget.h"
@@ -66,6 +67,7 @@ MainWindow::MainWindow(Workspace* workspace, QWidget* parent)
     , grammarComboRef_(0)
     , lineEndingComboRef_(0)
     , encodingComboRef_(0)
+    , themeComboRef_(0)
     , workspaceRef_(0)
 {
     constructActions();
@@ -631,6 +633,9 @@ void MainWindow::activeTabChanged()
         const edbee::LineEnding* lineEnding = doc->lineEnding();
         lineEndingComboRef_->setCurrentIndex( lineEnding->type() );
 
+        // select the current theme
+        themeComboRef_->setCurrentText(widget->textRenderer()->themeName());
+
         // set the filename in the window menu
         QString filename = widget->property("file").toString();
         setWindowFilePath(filename);
@@ -743,6 +748,22 @@ void MainWindow::grammarChanged()
             doc->setLanguageGrammar( grammar );
         }
     }
+}
+
+
+/// A theme has been changed in the combo
+void MainWindow::themeChanged()
+{
+    edbee::TextEditorWidget* widget = tabEditor();
+    if( widget ) {
+        QString name = themeComboRef_->currentText();
+        if( !name.isEmpty() ) {
+            widget->textRenderer()->setThemeByName(name);
+            widget->updateComponents();
+            widget->textRenderer()->invalidateCaches();
+        }
+    }
+
 }
 
 
@@ -1070,6 +1091,7 @@ void MainWindow::constructUI()
     QFont font = QFont(statusBar()->font().family(), 10 );
     statusBar()->setFont(font);
     statusBar()->showMessage(tr("Ready"));
+    statusBar()->addPermanentWidget(constructThemeCombo());
     statusBar()->addPermanentWidget(constructGrammarCombo());
     statusBar()->addPermanentWidget(constructLineEndingCombo());
     statusBar()->addPermanentWidget(constructEncodingCombo());
@@ -1150,6 +1172,19 @@ QComboBox* MainWindow::constructEncodingCombo()
 }
 
 
+/// Constructs a combobox with all themes
+QComboBox *MainWindow::constructThemeCombo()
+{
+    themeComboRef_ = new QComboBox();
+    themeComboRef_->setMinimumWidth(100);
+    edbee::TextThemeManager* themeManager = edbee::Edbee::instance()->themeManager();
+    for( int i=0, cnt = themeManager->themeCount(); i<cnt; ++i ) {
+        themeComboRef_->addItem(themeManager->themeName(i));
+    }
+    return themeComboRef_;
+}
+
+
 /// Builds the main menu of the application window
 void MainWindow::constructMenu()
 {
@@ -1221,6 +1256,7 @@ void MainWindow::connectSignals()
     connect( lineEndingComboRef_, SIGNAL(currentIndexChanged(int)), SLOT(lineEndingChanged()) );
     connect( encodingComboRef_, SIGNAL(currentIndexChanged(int)), SLOT(encodingChanged()) );
     connect( grammarComboRef_, SIGNAL(currentIndexChanged(int)), SLOT(grammarChanged()) );
+    connect( themeComboRef_, SIGNAL(currentIndexChanged(int)), SLOT(themeChanged()) );
 
     // tree menu actions
     connect( fileTreeSideWidgetRef_,SIGNAL(fileDoubleClicked(QString)), SLOT(gotoFile(QString)) );

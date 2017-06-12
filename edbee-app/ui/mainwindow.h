@@ -87,6 +87,7 @@ public slots:
     void encodingChanged();
     void lineEndingChanged();
     void grammarChanged();
+    void themeChanged();
 
     void editorActionTriggered();
     void updateStateEditorActions();
@@ -131,6 +132,7 @@ private:
     QComboBox* constructGrammarCombo();
     QComboBox* constructLineEndingCombo();
     QComboBox* constructEncodingCombo();
+    QComboBox* constructThemeCombo();
     void constructMenu();
 
     void connectSignals();
@@ -142,6 +144,7 @@ private:
     QComboBox* grammarComboRef_;                    ///< The grammar combobox
     QComboBox* lineEndingComboRef_;                 ///< The line-ending combobox
     QComboBox* encodingComboRef_;                   ///< The encodign combobox
+    QComboBox* themeComboRef_;                      ///< Theme switchter combobox
     QHash<QString,QAction*> actionMap_;             ///< The actionmap with all actions for this window
     Workspace* workspaceRef_;                       ///< The workspace this window belongs to
     QMenu* recentItemsMenuRef_;                     ///< A reference to the recent menu items list
