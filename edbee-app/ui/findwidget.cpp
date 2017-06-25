@@ -42,6 +42,9 @@ FindWidget::FindWidget(edbee::TextEditorWidget* parent)
     // delete when editing is done
     connect(lineEditRef_,SIGNAL(editingFinished()), this, SLOT(deactivate()) );
 
+    // editing changed event
+    connect(lineEditRef_,SIGNAL(textChanged(QString)), this, SLOT(textChanged(QString)) );
+
     // create a close editor action
     QAction* closeAction = new QAction(lineEditRef_);
     closeAction->setShortcut( Qt::Key_Escape );
@@ -106,6 +109,14 @@ void FindWidget::enterPressed()
     //qlog_info() << "TODO: Implement find!" << str ;
 }
 
+void FindWidget::textChanged(const QString &text)
+{
+    edbee::TextEditorController* controller = editorRef_->controller();
+    edbee::TextSearcher* searcher = controller->textSearcher();
+    searcher->setSearchTerm(text);
+    searcher->markAll(controller->borderedTextRanges());
+    controller->update();
+}
 
 void FindWidget::constructUI()
 {

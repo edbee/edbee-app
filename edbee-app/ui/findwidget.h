@@ -35,6 +35,7 @@ public slots:
 protected slots:
 
     void enterPressed();
+    void textChanged(const QString& text);
 
 
 private:

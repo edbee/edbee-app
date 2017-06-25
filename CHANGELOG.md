@@ -2,6 +2,7 @@
 
 edbee.app:
 
+- add: Searching text directly (via search window) marks the current selection directly (To demonstrate bordered ranges)
 - add: Added a Theme Selecter ComboBox to switch themes per tab.
 - fix: FilUtil.cpp didn't compile anymore in Qt 5.9RC
 - fix: Application resource icon wasn't loaded correctly
