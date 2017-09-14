@@ -4,7 +4,6 @@
  */
 
 #include "mainwindow.h"
-
 #include <QApplication>
 #include <QComboBox>
 #include <QDropEvent>
@@ -412,7 +411,7 @@ bool MainWindow::saveFileAs()
         updateTabName();
         return true;
     }
-    widget->setProperty("file","");
+    widget->setProperty("file",QString());
     return false;
 }
 
@@ -1150,7 +1149,7 @@ QComboBox* MainWindow::constructLineEndingCombo()
     lineEndingComboRef_->setMinimumWidth(100);
     for( int i=0, cnt = edbee::LineEnding::typeCount(); i<cnt; ++i  ) {
         const edbee::LineEnding* ending = edbee::LineEnding::get(i);
-        lineEndingComboRef_->addItem( QString("%1 (%2)").arg(ending->name()).arg(ending->escapedChars()), edbee::LineEnding::get(i)->name() );
+        lineEndingComboRef_->addItem( QString("%1 (%2)").arg(ending->name()).arg(ending->escapedChars()), QString(edbee::LineEnding::get(i)->name()) );
     }
     return lineEndingComboRef_;
 }
