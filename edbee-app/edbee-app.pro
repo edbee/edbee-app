@@ -9,6 +9,7 @@ EDBEE_SANITIZE = $$(EDBEE_SANITIZE)
   QMAKE_LFLAGS+=-fsanitize=address -fsanitize=bounds -fsanitize-undefined-trap-on-error
 }
 
+
 ## edbee-lib dependency
 ##=======================
 
