@@ -5,6 +5,8 @@ include($$PWD/edbee-app.pri)
 
 EDBEE_SANITIZE = $$(EDBEE_SANITIZE)
 !isEmpty( EDBEE_SANITIZE ) {
+  warning('*** SANITIZE ENABLED! edbee-app ***')
+
   QMAKE_CXXFLAGS+=-fsanitize=address -fsanitize=bounds -fsanitize-undefined-trap-on-error
   QMAKE_LFLAGS+=-fsanitize=address -fsanitize=bounds -fsanitize-undefined-trap-on-error
 }
