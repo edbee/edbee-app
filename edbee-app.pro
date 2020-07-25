@@ -6,8 +6,6 @@ EDBEE_SANITIZE = $$(EDBEE_SANITIZE)
   warning('*** SANITIZE ENABLED! edbee-app (global) ***')
   QMAKE_CXXFLAGS+=-fsanitize=address -fsanitize=bounds -fsanitize-undefined-trap-on-error
   QMAKE_LFLAGS+=-fsanitize=address -fsanitize=bounds -fsanitize-undefined-trap-on-error
-
-
 }
 
 src_lib.subdir = edbee-lib

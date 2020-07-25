@@ -27,7 +27,7 @@ SOURCES += \
 
 # manually add the sources that need testing
 SOURCES += \
-	..\edbee-app\models\edbeeconfig.cpp
+        ../edbee-app/models/edbeeconfig.cpp
 
 
 

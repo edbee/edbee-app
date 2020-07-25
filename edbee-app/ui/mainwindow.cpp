@@ -4,6 +4,7 @@
  */
 
 #include "mainwindow.h"
+#include <QAction>
 #include <QApplication>
 #include <QComboBox>
 #include <QDropEvent>
@@ -50,6 +51,7 @@
 #include "util/fileutil.h"
 
 #include "edbee/debug.h"
+#include <edbee/models/textautocompleteprovider.h>
 
 
 
@@ -60,14 +62,14 @@ static const int FileSizeWarning = 1024*1024*20;  // Larger then 20 MB give a wa
 /// Constructor for a main application windows
 MainWindow::MainWindow(Workspace* workspace, QWidget* parent)
     : QMainWindow(parent)
-    , fileTreeSideWidgetRef_(0)
-    , tabWidgetRef_(0)
-    , statusBarRef_(0)
-    , grammarComboRef_(0)
-    , lineEndingComboRef_(0)
-    , encodingComboRef_(0)
-    , themeComboRef_(0)
-    , workspaceRef_(0)
+    , fileTreeSideWidgetRef_(nullptr)
+    , tabWidgetRef_(nullptr)
+    , statusBarRef_(nullptr)
+    , grammarComboRef_(nullptr)
+    , lineEndingComboRef_(nullptr)
+    , encodingComboRef_(nullptr)
+    , themeComboRef_(nullptr)
+    , workspaceRef_(nullptr)
 {
     constructActions();
     constructUI();
@@ -831,7 +833,7 @@ void MainWindow::showFindWidget()
             widget->layout()->addWidget(findWidget);
 
             // set the find widget
-            QVariant v = qVariantFromValue((void *)findWidget);
+            QVariant v = QVariant::fromValue((void *)findWidget);
             widget->setProperty("findWidget",v);
         }
         findWidget->show();
@@ -897,6 +899,13 @@ void MainWindow::editorContextMenu()
         menu->addAction( controller->createAction( "paste", tr("Paste"), QIcon(), menu ) );
         menu->addSeparator();
         menu->addAction( controller->createAction( "sel_all", tr("Select All"), QIcon(), menu ) );
+
+
+        QAction* readonlyAction = controller->createAction( "toggle_readonly", tr("Toggle Readonly"), QIcon(), menu ) ;
+        readonlyAction->setCheckable(true);
+        readonlyAction->setChecked(controller->readonly());
+        menu->addAction(readonlyAction);
+
 
         // is a file coupled to the curent editor add 'reveal in sidebar'
         if( !tabFilename().isEmpty() ) {
@@ -984,9 +993,27 @@ edbee::TextEditorWidget* MainWindow::createEditorWidget()
     edbee::TextEditorWidget* result = new edbee::TextEditorWidget();
     edbeeApp()->config()->applyToWidget( result );
 
+//    edbee::StringTextAutoCompleteProvider* provider = new edbee::StringTextAutoCompleteProvider();
+//    provider->add("const", 0, "Test = Other item", "This is the documentation of this autocomplete item");
+//    provider->add("class", 0, "Add a class", "Out class description documentation");
+//    provider->add("compare", 0, "variable = Value");
+//    provider->add("compared");
+//    provider->add("complete");
+//    provider->add("computere");
+//    // etc ...
+//    result->textDocument()->autoCompleteProviderList()->giveProvider(provider);
+
     // connect our custom contextmenu to the widget
     result->textEditorComponent()->setContextMenuPolicy( Qt::CustomContextMenu  );
     connect( result->textEditorComponent(), SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(editorContextMenu()) );
+
+//    result->setPlaceholderText(
+//        "Eiusmod nulla velit excepteur voluptate commodo ullamco sunt consectetur et labore ipsum officia. Duis dolor minim ullamco deserunt esse velit et mollit nostrud ullamco ea nulla. Laboris elit deserunt exercitation deserunt est officia est.\n"
+//        "Sint consequat consectetur Lorem sunt consequat ut. Irure quis culpa duis aute occaecat ut deserunt labore laborum adipisicing. Excepteur magna anim Lorem ullamco sunt exercitation Lorem dolor sunt eiusmod. Pariatur excepteur ea Lorem exercitation eu culpa duis excepteur ea in ea dolor est. In amet eiusmod ad consequat nostrud occaecat reprehenderit eiusmod qui. Cupidatat aute quis do non non sunt laborum. Ex non sit tempor culpa voluptate fugiat voluptate Lorem.\n"
+//        "Eu quis anim dolor labore dolore cillum non do in. Fugiat sint in nisi nisi nisi tempor laboris in. Eiusmod ad id fugiat incididunt.\n"
+//        "Tempor enim eiusmod excepteur officia pariatur ea elit magna. Duis laborum sint proident dolor pariatur elit veniam ad adipisicing sint irure labore cupidatat. Deserunt officia et non proident commodo sunt reprehenderit nisi Lorem sint sunt.\n"
+//   );
+
     return result;
 }
 
