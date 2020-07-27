@@ -127,9 +127,9 @@ QString MainWindow::tabName(int idx) const
 /// @return the edbee::editor widget or 0 if not found
 edbee::TextEditorWidget* MainWindow::tabEditor(int index) const
 {
-    if( index < 0 ) {
+    if(index < 0) {
         index = tabWidgetRef_->currentIndex();
-        if(index<0) { return 0; }
+        if(index < 0) { return nullptr; }
     }
     QWidget* widget = tabWidgetRef_->widget(index);
     return qobject_cast<edbee::TextEditorWidget*>(widget);
@@ -1033,7 +1033,7 @@ QAction *MainWindow::action(const QString& name)
 /// creates a text-editor action
 void MainWindow::createEditorAction(const QString& id, const char* text )
 {
-    QAction* action = new QAction( tr(text), 0 );
+    QAction* action = new QAction(tr(text), nullptr);
     edbee::TextEditorKeyMap* map = edbee::Edbee::instance()->defaultKeyMap();
     edbee::TextEditorKey* key = map->get(id);
     if( key ) {
@@ -1053,7 +1053,7 @@ void MainWindow::createEditorAction(const QString& id, const char* text )
 /// @param slot the that should recieve the event
 void MainWindow::createAction(const QString& id, const QString& text, const QKeySequence& keySequence, QObject* object, const char* slot)
 {
-    QAction* action = new QAction( text, 0);
+    QAction* action = new QAction(text, nullptr);
     action->setShortcut(keySequence);
     action->setData(id);
     connect( action, SIGNAL(triggered()), object, slot );
