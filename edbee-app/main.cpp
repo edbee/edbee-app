@@ -27,9 +27,10 @@ int main(int argc, char* argv[])
 
 //    const QString sLogPath(QDir(qApp->applicationDirPath()).filePath("log.txt"));
 //    static QsLogging::DestinationPtr fileDestination(  QsLogging::DestinationFactory::MakeFileDestination(sLogPath) );
-    static QsLogging::DestinationPtr debugDestination( QsLogging::DestinationFactory::MakeDebugOutputDestination() );
-    logger.addDestination(debugDestination.get());
-//    logger.addDestination(fileDestination.get());
+//    static QsLogging::DestinationPtrU debugDestination( QsLogging::DestinationFactory::MakeDebugOutputDestination() );
+    static QsLogging::DestinationPtrU debugDestination( QsLogging::DestinationFactory::MakeDebugOutputDestination() );
+    logger.addDestination(std::move(debugDestination));
+//    logger.addDestination(fileDestination.get()));
     logger.setLoggingLevel(QsLogging::TraceLevel);
 
     // initialize the application (parsing syntax files, load configuration et)

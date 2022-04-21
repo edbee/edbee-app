@@ -23,7 +23,7 @@ GotoWidget::GotoWidget(edbee::TextEditorWidget* parent)
     lineEditRef_ = new QLineEdit();
 
     QBoxLayout* boxLayout = new QBoxLayout( QBoxLayout::LeftToRight );
-    boxLayout->setMargin(7);
+    boxLayout->setContentsMargins(7, 7, 7, 7);
     setLayout( boxLayout );
     boxLayout->addWidget( new QLabel( tr("Goto line[,column]")) );
     boxLayout->addWidget( lineEditRef_, 0, Qt::AlignHCenter );

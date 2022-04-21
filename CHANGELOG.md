@@ -2,12 +2,13 @@
 
 edbee.app:
 
+- fix: Added Qt 6.3 compatibility
 - add: Searching text directly (via search window) marks the current selection directly (To demonstrate bordered ranges)
 - add: Added a Theme Selecter ComboBox to switch themes per tab.
 - fix: FilUtil.cpp didn't compile anymore in Qt 5.9RC
 - fix: Application resource icon wasn't loaded correctly
 - fix: Updated edbee library to fix MinGW crashes and allow MinGW compilation
-- fix: Fixed platform incorrect include 
+- fix: Fixed platform incorrect include
 - fix: Updated Onigmo, fixing a lexing crash
 - BREAKING CHANGE, edbee-lib. moved all source/headers files under the folder 'edbee/' to prevent filename collisions when embedding it in other projects.
 
@@ -23,7 +24,7 @@ edbee.app:
 - add #81, Add new folder option to sidebar file tree
 - add #62, Add create new file option to the tree view sidebar
 - add #80, Add rename file support to the tree view
-- add #57, Show active file and icon in the titlebar 
+- add #57, Show active file and icon in the titlebar
 - add #27, Added file-changed check support when closing the window/application
 - add #42, #88, Reveal in sidebar support added to context menu
 - add #34, Switching tabs now can be done with a keyboard press
@@ -38,8 +39,8 @@ edbee.app:
 - fix #54, Sort the grammar combobx alphabetically
 - fix #26, Support multiple windows, with the help of a window manager
 - fix #15, It now is possible to change to the font of the editor
-- fix #14, Changing the language now automaticly updates the editor 
+- fix #14, Changing the language now automaticly updates the editor
 
 ## v0.1.0 Initial Release
 
-The initial release on Github. 
+The initial release on Github.

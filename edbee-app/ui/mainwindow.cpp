@@ -1079,7 +1079,7 @@ void MainWindow::constructActions()
 
 
     createAction( "find.find", tr("&Find..."), QKeySequence::Find, this, SLOT(showFindWidget()));
-    createAction( "goto.line", tr("&Goto Line..."), QKeySequence( Qt::META + Qt::Key_G), this, SLOT(showGotoEntryPopup()) );
+    createAction( "goto.line", tr("&Goto Line..."), QKeySequence( Qt::META | Qt::Key_G), this, SLOT(showGotoEntryPopup()) );
 
     createAction( "goto.prev_tab", tr("Previous Tab"), QKeySequence::PreviousChild, this, SLOT(gotoPrevTab()) );
     createAction( "goto.next_tab", tr("Next Tab"), QKeySequence::NextChild, this, SLOT(gotoNextTab()) );
@@ -1090,9 +1090,9 @@ void MainWindow::constructActions()
     createAction( "workspace.save_as", tr("&Save Workspace As..."), QKeySequence(), this, SLOT(saveWorkspaceAs()) );
     createAction( "workspace.close", tr("&Close Workspace"), QKeySequence(), this, SLOT(closeWorkspace()));
 
-    createAction("win.new", tr("&New Window"), QKeySequence( Qt::CTRL + Qt::SHIFT + Qt::Key_N ), this, SLOT(windowNew() ) );
-    createAction("win.close", tr("&Close Window"), QKeySequence( Qt::CTRL + Qt::SHIFT + Qt::Key_W ), this, SLOT(windowClose() ) );
-    createAction("win.minimize",tr("&Minimize"), QKeySequence(Qt::CTRL + Qt::Key_M ), this, SLOT(showMinimized()) );
+    createAction("win.new", tr("&New Window"), QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_N ), this, SLOT(windowNew() ) );
+    createAction("win.close", tr("&Close Window"), QKeySequence( Qt::CTRL | Qt::SHIFT | Qt::Key_W ), this, SLOT(windowClose() ) );
+    createAction("win.minimize",tr("&Minimize"), QKeySequence(Qt::CTRL | Qt::Key_M ), this, SLOT(showMinimized()) );
     createAction("win.maximize",tr("&Zoom"), QKeySequence(), this, SLOT(showMaximized()) );
     createAction("win.fullscreen",tr("Enter FullScreen"), QKeySequence::FullScreen, this, SLOT(showFullScreen()) );
 
@@ -1130,6 +1130,7 @@ void MainWindow::constructUI()
 
     // build the side widgets
     fileTreeSideWidgetRef_ = new FileTreeSideWidget();
+fileTreeSideWidgetRef_ ->setFocusPolicy(Qt::ClickFocus); // hack to test focus issues
 
     // build the splitter
     splitter->addWidget(fileTreeSideWidgetRef_);

@@ -21,9 +21,9 @@ int main(int argc, char* argv[])
 
     // make sure we see the QsLogging items
     QsLogging::Logger& logger = QsLogging::Logger::instance();
-    static QsLogging::DestinationPtr debugDestination( QsLogging::DestinationFactory::MakeDebugOutputDestination() );
+    static QsLogging::DestinationPtrU debugDestination( QsLogging::DestinationFactory::MakeDebugOutputDestination() );
     //delete (void*)1;    // crash :-)
-    logger.addDestination(debugDestination.get());
+    logger.addDestination(std::move(debugDestination));
     logger.setLoggingLevel(QsLogging::TraceLevel);
 
 

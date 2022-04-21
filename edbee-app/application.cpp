@@ -66,7 +66,12 @@ void Application::initApplication()
     #else
         appDataPath_ = qApp->applicationDirPath() + "/data/";
     #endif
+
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     userDataPath_   = QStandardPaths::writableLocation( QStandardPaths::DataLocation) + "/";
+#else
+    userDataPath_   = QStandardPaths::writableLocation(QStandardPaths::AppLocalDataLocation) + "/";
+#endif
 
     // configure the edbee component to use the default paths
     edbee::Edbee* tm = edbee::Edbee::instance();

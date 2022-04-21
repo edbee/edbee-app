@@ -558,7 +558,7 @@ void FileTreeSideWidget::constructUI()
 
     layout->addLayout( comboLayout, 0 );
     layout->addWidget( fileTreeRef_, 1 );
-    layout->setMargin(0);
+    layout->setContentsMargins(0, 0, 0, 0);
     setLayout( layout);
 }
 

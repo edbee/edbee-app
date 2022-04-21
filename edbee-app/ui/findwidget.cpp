@@ -122,7 +122,7 @@ void FindWidget::constructUI()
 {
 
     QHBoxLayout* layout = new QHBoxLayout();// QBoxLayout::LeftToRight );
-    layout->setMargin(7);
+    layout->setContentsMargins(7, 7, 7, 7);
      setLayout( layout );
 
 
