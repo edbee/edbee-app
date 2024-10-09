@@ -2,6 +2,7 @@
 
 edbee.app:
 
+- add: ctrl+a/ctrl+e support mac OS X
 - fix: Added Qt 6.3 compatibility
 - add: Searching text directly (via search window) marks the current selection directly (To demonstrate bordered ranges)
 - add: Added a Theme Selecter ComboBox to switch themes per tab.

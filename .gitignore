@@ -20,4 +20,4 @@ Makefile
 *-build-*
 
 edbee-lib-doxydocs
-
+build/
