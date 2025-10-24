@@ -1,4 +1,11 @@
-## Upcoming Release
+# Changelog
+
+## v0.2.0 Update edbee-lib, changed core types
+
+- (2025-10-24) Update edbee-lib to v0.12.0, with the changes types
+
+
+## Older Items
 
 edbee.app:
 

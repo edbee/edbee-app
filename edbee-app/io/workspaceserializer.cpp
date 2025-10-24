@@ -262,14 +262,13 @@ QVariantMap WorkspaceSerializer::serializeEditorTab(edbee::TextEditorWidget* edi
     }
 
     // add the scroll position
-    result.insert("scroll", editor->textRenderer()->firstVisibleLine() );
+    result.insert("scroll", static_cast<uint64_t>(editor->textRenderer()->firstVisibleLine()));
 
     // add the active line and colum
     // we do not store alle ranges!! This is confusing when opening the file
     // only the first caret is stored!
     const edbee::TextRange& range = editor->textSelection()->range(0);
-    result.insert("caret", range.caret() );
-
+    result.insert("caret", static_cast<qint64>(range.caret()));
     return result;
 }
 
@@ -299,21 +298,20 @@ void WorkspaceSerializer::deserializeEditorTab(edbee::TextEditorWidget* editor, 
         if( grammar ) {
             grammarLexer->setGrammar( grammar );
         }
-
     }
 
     // restore the scroll position
     int line = map.value("scroll").toInt();
-    if( line > 0 && line < doc->lineCount() ) {
+    if (line > 0 && static_cast<size_t>(line) < doc->lineCount()) {
         // editor->scrollTopToLine( line );         // Yuck, somehow the scroll-dimensions aren't ready at this moment so changing scroll-position doesn't work
-        QMetaObject::invokeMethod( editor, "scrollTopToLine", Qt::QueuedConnection, Q_ARG(int,line) );  // work-around is to post a scroll event
+        QMetaObject::invokeMethod( editor, "scrollTopToLine", Qt::QueuedConnection, Q_ARG(int,line));  // work-around is to post a scroll event
     }
 
     // restore the caret position
     // only 1 caret position is stored. Starting an editor with multi-carets is not something you'de expect!
     int caret = map.value("caret").toInt();
-    if( caret >= 0 && caret <= doc->length() ) {
-        editor->textSelection()->setRange(caret,caret);
+    if( caret >= 0 && static_cast<size_t>(caret) <= doc->length() ) {
+        editor->textSelection()->setRange(caret, caret);
     }
 }
 

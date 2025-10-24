@@ -570,6 +570,6 @@ void FileTreeSideWidget::connectSignals()
     connect( fileTreeRef_, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(openFileItem(QModelIndex)) );
     connect( fileTreeRef_, SIGNAL(activated(QModelIndex)), this, SLOT(openFileItem(QModelIndex)) );
     connect( fileTreeRef_, SIGNAL(customContextMenuRequested(QPoint)), this, SLOT(fileTreeContextMenu(QPoint)) );
-    connect( pathComboRef_, SIGNAL(currentIndexChanged(QString)), this, SLOT(setRootPath(QString)));
+    connect( pathComboRef_, SIGNAL(currentTextChanged(QString)), this, SLOT(setRootPath(QString)));
 }
 

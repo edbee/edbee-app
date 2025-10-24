@@ -16,10 +16,10 @@
 int main(int argc, char* argv[])
 {
     Application app(argc, argv);
-    app.setApplicationName( "edbee" );
-    app.setApplicationVersion( "0.1");
-    app.setOrganizationName( "edbee" );
-    app.setOrganizationDomain( "edbee.net" );
+    app.setApplicationName("edbee");
+    app.setApplicationVersion("0.2.0");
+    app.setOrganizationName("edbee");
+    app.setOrganizationDomain("edbee.net");
     app.setApplicationDisplayName("edbee.app");
 
     // init the logging mechanism

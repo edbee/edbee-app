@@ -129,21 +129,21 @@ void FindWidget::constructUI()
 
     QToolButton* toggleButton = new QToolButton(this);
     toggleButton->setFont( edbeeApp()->iconFont() );
-    toggleButton->setText( QChar(icon_repeat) );
+    toggleButton->setText( QChar(static_cast<quint16>(icon_repeat)) );
     toggleButton->setToolTip(tr("Wrap Around"));
     toggleButton->setCheckable(true);
     layout->addWidget( toggleButton, 0 );
 
     toggleButton = new QToolButton(this);
     toggleButton->setFont( edbeeApp()->iconFont() );
-    toggleButton->setText( QChar(icon_asterisk) );
+    toggleButton->setText( QChar(static_cast<quint16>(icon_asterisk)) );
     toggleButton->setToolTip(tr("Regular Expressions"));
     toggleButton->setCheckable(true);
     layout->addWidget( toggleButton, 0 );
 
     toggleButton = new QToolButton(this);
     toggleButton->setFont( edbeeApp()->iconFont() );
-    toggleButton->setText( QChar(icon_font) );
+    toggleButton->setText( QChar(static_cast<quint16>(icon_font)) );
     toggleButton->setToolTip(tr("Case Sensitive"));
     toggleButton->setCheckable(true);
     layout->addWidget( toggleButton, 0 );
@@ -166,7 +166,7 @@ void FindWidget::constructUI()
 
     QToolButton* but = new QToolButton( this );
     but->setFont( edbeeApp()->iconFont() );
-    but->setText( QChar(icon_caret_left) ); //<
+    but->setText( QChar(static_cast<quint16>(icon_caret_left)) ); //<
     but->setShortcut( editorRef_->controller()->keyMap()->getSequence("find_prev_match") );
     but->setToolTip( QString(tr("Find Previous (%1)")).arg(but->shortcut().toString()) );
     connect( but, SIGNAL(clicked()), SLOT(findPrevWord()) );
@@ -174,7 +174,7 @@ void FindWidget::constructUI()
 
     but = new QToolButton( this );
     but->setFont( edbeeApp()->iconFont() );
-    but->setText( QChar(icon_caret_right) ); // >
+    but->setText( QChar(static_cast<quint16>(icon_caret_right)) ); // >
     but->setShortcut( editorRef_->controller()->keyMap()->getSequence("find_next_match") );
     but->setToolTip( QString(tr("Find Next (%1)")).arg(but->shortcut().toString()) );
     connect( but, SIGNAL(clicked()), SLOT(findNextWord()) );
@@ -183,7 +183,7 @@ void FindWidget::constructUI()
 
     but = new QToolButton( this );
     but->setFont( edbeeApp()->iconFont() );
-    but->setText( QChar(icon_th) ); // >
+    but->setText( QChar(static_cast<quint16>(icon_th)) ); // >
     but->setShortcut( editorRef_->controller()->keyMap()->getSequence("sel_all_matches") );
     but->setToolTip( QString(tr("Select All (%1)")).arg(but->shortcut().toString()) );
     connect( but, SIGNAL(clicked()), SLOT(selectAllWords()) );
